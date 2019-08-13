@@ -4,7 +4,7 @@ We've all been there: you're writing something--an important email, a thoughtful
     
 **Lexi** will offer users a seamless, intuitive user experience, tracing a clear visual and verbal path from one synonym to the next until you find that perfect word.
 
-(./src/assets/images/lexi_wireframe.png)
+![Wireframe preview](src/assets/images/lexi_wireframe.jpg)
 
 ### Functionality and Features
 * Users can enter a root word for which they'd like a synonym, and Lexi will display the word's definition as well as a series of synonyms they can choose from to begin exploring
