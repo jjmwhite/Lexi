@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./src/assets/stylesheets/main.css">
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+    <title>Lexi: A Visual Thesaurus</title>
+  </head>
+
+  <body>
+    <div id='app'>
+      <nav>
+        <h1>Lexi: A Visual Thesaurus</h1>
+        <ul class='personal-links'>
+          <li><a href="#">Github</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </nav>
+
+      <form id='search-form'>
+        <input id='search-field' type="search" placeholder='Find a synonym...' value=''>
+        <input type='submit' value='Search'>
+      </form>
+
+      <!-- root word  -->
+      <ul id='word-tree'>
+      </ul>
+
+    </div>
+    <script src="./dist/main.js"></script>
+  </body>
+</html>

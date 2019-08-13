@@ -29,8 +29,8 @@
     "not dead"
   ],
   "scripts": {
-    "webpack": "webpack --config webpack.config.js",
-    "watch": "webpack --watch --config webpack.config.js",
+    "webpack": "webpack --config webpack.config.js ",
+    "watch": "webpack --watch --mode=development --config webpack.config.js",
     "build": "webpack --config webpack.config.js  --optimize-minimize"
   },
   "repository": {
