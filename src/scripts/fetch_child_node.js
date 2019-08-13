@@ -16,17 +16,23 @@ export const fetchChildNode = (syn, wordType, parentId) => {
 
 const handleChildResponse = (jsonResponse, wordType, parentId) => {
   let parentEle = document.getElementById(parentId)
-  jsonResponse.forEach(type => {
-    let synList = createNode('ul');
-    if (type.fl == wordType) {
-      type.meta.syns[0].map( (syn) => {
-        let subLi = createNode('li')
-        subLi.innerHTML = syn;
-        subLi.onclick = () => addClickListener();
-        subLi.id = idGenerator();
-        synList.append(subLi);
-      })
-    }
-    parentEle.append(synList);
-  })
+  if (jsonResponse[0] instanceof Object) {
+    jsonResponse.forEach(type => {
+      let synList = createNode('ul');
+      if (type.fl == wordType) {
+        type.meta.syns[0].map( (syn) => {
+          let subLi = createNode('li')
+          subLi.innerHTML = syn;
+          subLi.onclick = () => addClickListener();
+          subLi.id = idGenerator();
+          synList.append(subLi);
+        })
+      }
+      parentEle.append(synList);
+    })
+  } else {
+    let error = createNode('li')
+    error.innerHTML = 'We\'re sorry, but the word you entered isn\'t in the thesaurus.';
+    parentEle.append(error)
+  }
 }

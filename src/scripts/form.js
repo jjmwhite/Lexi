@@ -17,8 +17,10 @@ form.addEventListener('submit', (e) => {
   let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`;
 
   fetch(url)
-    .then(response => { return response.json() })
+    .then(response => { 
+      return response.json() })
     .then( jsonResponse => {
       handleRootResponse(jsonResponse)})
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error)})
 })
