@@ -1,110 +1,114 @@
-debugger
-export const allData = [
+const data = [
   {
-    id: 1,
-    parentId: '',
-    wordType: '',
-    word: 'test'
+    "id": 1,
+    "parentId": "",
+    "wordType": "",
+    "word": "test"
   },
   {
-    id: 100,
-    parentId: 1,
-    wordType: 'noun',
-    word: 'noun'
+    "id": 100,
+    "parentId": 1,
+    "wordType": "noun",
+    "word": "noun"
   },
   {
-    id: 101,
-    parentId: 100,
-    wordType: 'noun',
-    word: 'experiment'
+    "id": 101,
+    "parentId": 100,
+    "wordType": "noun",
+    "word": "experiment"
   },
   {
-    id: 102,
-    parentId: 100,
-    wordType: 'noun',
-    word: 'exam'
+    "id": 102,
+    "parentId": 100,
+    "wordType": "noun",
+    "word": "exam"
   },
   {
-    id: 103,
-    parentId: 100,
-    wordType: 'noun',
-    word: 'trial'
+    "id": 103,
+    "parentId": 100,
+    "wordType": "noun",
+    "word": "trial"
   },
   {
-    id: 106,
-    parentId: 103,
-    wordType: 'noun',
-    word: 'experiment'
+    "id": 106,
+    "parentId": 103,
+    "wordType": "noun",
+    "word": "experiment"
   },
   {
-    id: 107,
-    parentId: 103,
-    wordType: 'noun',
-    word: 'effort'
+    "id": 107,
+    "parentId": 103,
+    "wordType": "noun",
+    "word": "effort"
   },
   {
-    id: 104,
-    parentId: 1,
-    wordType: 'verb',
-    word: 'verb'
+    "id": 104,
+    "parentId": 1,
+    "wordType": "verb",
+    "word": "verb"
   },
   {
-    id: 105,
-    parentId: 104,
-    wordType: 'verb',
-    word: 'try'
+    "id": 105,
+    "parentId": 104,
+    "wordType": "verb",
+    "word": "try"
   }
 ];
 
-// debugger
-// export const allData = {
-//   100: {
-//     id: 100,
-//     parentId: '',
-//     wordType: 'noun',
-//     word: 'noun',
-//     children: [
+export const returnData = () => {
+  return data;
+};
+
+
+
+// {
+//   "100": {
+//     "id": 100,
+//     "parentId": "",
+//     "wordType": "noun",
+//     "word": "noun",
+//     "children": [
 //       {
-//         101: {
-//           id: 101,
-//           parentId: 100,
-//           wordType: 'noun',
-//           word: 'experiment',
-//           children: []
+//         "data": {
+//           "id": 101,
+//           "parentId": 100,
+//           "wordType": "noun",
+//           "word": "experiment",
+//           "children": []
 //         }
 //       },
 //       {
-//         102: {
-//           id: 102,
-//           parentId: 100,
-//           wordType: 'noun',
-//           word: 'exam',
-//           children: []
+//         "data": {
+//           "id": 102,
+//           "parentId": 100,
+//           "wordType": "noun",
+//           "word": "exam",
+//           "children": []
 //         }
 //       },
 //       {
-//         103: {
-//           id: 103,
-//           parentId: 100,
-//           wordType: 'noun',
-//           word: 'trial',
-//           children: [
+//         "data": {
+//           "id": 103,
+//           "parentId": 100,
+//           "wordType": "noun",
+//           "word": "trial",
+//           "children": [
 //             {
-//               106: {
-//                 id: 106,
-//                 parentId: 103,
-//                 wordType: 'noun',
-//                 word: 'experiment',
-//                 children: []
+//               "data": {
+//                 "id": 106,
+//                 "parentId": 103,
+//                 "wordType": "noun",
+//                 "word": "experiment",
+//                 "children": []
 //               }
 //             },
 //             {
-//               107: {
-//                 id: 107,
-//                 parentId: 103,
-//                 wordType: 'noun',
-//                 word: 'effort',
-//                 children: []
+//               "data": {
+//                 "id": 107,
+//                 "parentId": 103,
+//                 "wordType": "noun",
+//                 "word": "effort",
+//                 "children": []
 //               }
 //             },
 //           ]
@@ -112,21 +116,22 @@ export const allData = [
 //       }
 //     ]
 //   },
-//   104: {
+//   "data": {
 //     id: 104,
-//     parentId: '',
-//     wordType: 'verb',
-//     word: 'verb',
-//     children: [
+//     "parentId": "",
+//     "wordType": "verb",
+//     "word": "verb",
+//     "children": [
 //       {
-//         105: {
-//           id: 105,
-//           parentId: 104,
-//           wordType: 'verb',
-//           word: 'try',
-//           children: []
+//         "data": {
+//           "id": 105,
+//           "parentId": 104,
+//           "wordType": "verb",
+//           "word": "try",
+//           "children": []
 //         }
 //       }
 //     ]
 //   }
 // };
+

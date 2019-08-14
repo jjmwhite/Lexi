@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: sans-serif;
 }
 
 nav {
@@ -30,4 +31,15 @@ nav {
 #search-field {
   display: block;
   margin: 0 auto;
+}
+
+circle {
+  fill: none;
+  stroke: black;
+  stroke-width: 2px;
+}
+
+path {
+  fill: none;
+  stroke: black;
 }
