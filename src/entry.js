@@ -5,4 +5,5 @@
 // 4. data is parsed and options are added as lis
 
 import Form from './scripts/form';
+import { allData } from './data/data';
 

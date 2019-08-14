@@ -1,4 +1,5 @@
 import { handleRootResponse } from './root_reponse_handling'
+import { allData } from '../data/data';
 
 const form = document.getElementById('search-form')
 const wordTree = document.getElementById('word-tree')
@@ -7,9 +8,12 @@ let query;
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   
-  while (wordTree.firstChild) {
-    wordTree.removeChild(wordTree.firstChild)
-  }
+  // while (wordTree.firstChild) {
+  //   wordTree.removeChild(wordTree.firstChild)
+  // }
+  // while (allData) {
+  //   allData = {}
+  // }
   
   query = document.getElementById('search-field').value
 

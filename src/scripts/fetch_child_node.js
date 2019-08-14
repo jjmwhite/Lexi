@@ -1,4 +1,6 @@
 import { createNode, addClickListener, idGenerator } from './node_utilities'
+import { allData } from '../data/data';
+import { merge } from 'lodash';
 
 export const fetchChildNode = (syn, wordType, parentId) => {
   const query = syn
