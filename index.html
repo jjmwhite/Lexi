@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Habibi|Mate&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./src/assets/stylesheets/main.css">
-    <script src='https://d3js.org/d3.v4.min.js'></script>
-    <title>Lexi: A Visual Thesaurus</title>
-  </head>
 
-  <body>
-    <div id='app'>
-      <nav>
-        <h1>Lexi</h1>
-        <h2>A Visual Thesaurus</h2>
-        <div class='personal-links'>
-          <a href="https://github.com/jjmwhite/Lexi">Github</a>
-          <a href="https://www.linkedin.com/in/jessicajmwhite/">LinkedIn</a>
-        </div>
-      </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Krub|Mate&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/assets/stylesheets/main.css">
+  <script src='https://d3js.org/d3.v4.min.js'></script>
+  <title>Lexi: A Visual Thesaurus</title>
+</head>
+
+<body>
+  <div id='app'>
+    <nav>
+      <h1>LEXI</h1>
+      <h2>VISUAL THESAURUS</h2>
+      <div class='personal-links'>
+        <a href="https://github.com/jjmwhite/Lexi"><i class="fab fa-github-alt"></i></a>
+        <a href="https://www.linkedin.com/in/jessicajmwhite/"><i class="fab fa-linkedin-in"></i></a>
+      </div>
       <form id='search-form'>
-        <input id='search-field' type="search" placeholder='Find a synonym...' value=''>
+        <input id='search-field' type="text" placeholder='Find a synonym...' value=''>
         <input type='submit' value='Search'>
       </form>
+    </nav>
 
-      <!-- root word goes here -->
-      <main></main>
+    <!-- root word goes here -->
+    <main></main>
 
-    </div>
-    <script src="./dist/main.js"></script>
-  </body>
+  </div>
+  <script src="./dist/main.js"></script>
+</body>
+
 </html>
