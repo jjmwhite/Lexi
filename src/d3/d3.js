@@ -1,5 +1,21 @@
 import { fetchChildNode } from '../scripts/fetch_child_node';
 
+function handleMouseover() {
+  d3.select(this)
+    .transition()
+    .duration(300)
+    .attr('fill', '#7f1661')
+    .attr('r', 7)
+}
+
+function handleMouseout() {
+  d3.select(this)
+    .transition()
+    .duration(300)
+    .attr('fill', '#420D33')
+    .attr('r', 4)
+}
+
 export default (data) => {
   d3.select('svg').remove();
     // Set up the display area
@@ -40,12 +56,12 @@ export default (data) => {
     circles.enter().append("circle")
       .attr("cx", d => { return d.y })
       .attr("cy", d => { return d.x })
-      .attr("r", 3);
+      .attr("r", 4);
 
     d3.selectAll("circle")
-      .on("click", (e) => {
-        fetchChildNode(e)
-      })
+      .on("click", d => { fetchChildNode(d) })
+      .on("mouseover", handleMouseover)
+      .on("mouseout", handleMouseout)
 
     // Add paths between each node
     const connections = displayArea.append("g").selectAll("path")
@@ -64,5 +80,9 @@ export default (data) => {
       .text(d => { return d.data.word })
       .attr("x", d => { return d.y - 5 })
       .attr("y", d => { return d.x - 10 })
+
+    d3.selectAll("text")
+      .on("hover", e => {
+      })
   }
 }

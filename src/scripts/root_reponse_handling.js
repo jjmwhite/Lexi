@@ -6,20 +6,15 @@ export const handleRootResponse = (jsonResponse) => {
   const data = JSON.parse(sessionStorage.getItem('data'))
   const root = data[0];
 
-  debugger
   if (jsonResponse[0] instanceof Object) {
-    
-    debugger
     jsonResponse.forEach( type => {
-
-      debugger
       if (type.meta.id === root.word) {
         let rootChildObj = {};
         rootChildObj['id'] = idGenerator();
         rootChildObj['parentId'] = 1;
         rootChildObj['wordType'] = type.fl;
         rootChildObj['word'] = type.fl;
-        rootChildObj['def'] = type.shortdef[0];
+        rootChildObj['defs'] = type.shortdef; //array of defs
         data.push(rootChildObj)
 
         let syns = type.meta.syns[0];

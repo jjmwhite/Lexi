@@ -34,7 +34,7 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
           childNode['parentId'] = parentId;
           childNode['wordType'] = wordType;
           childNode['word'] = syn;
-          
+          childNode['defs'] = type.shortdef;
           data.push(childNode);
         })
       }

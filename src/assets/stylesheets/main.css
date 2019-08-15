@@ -63,13 +63,14 @@ main {
 }
 
 circle {
-  stroke: #420D33;
-  stroke-width: 2px;
+  fill: #420D33;
+  /* stroke-width: 2px; */
+  cursor: pointer;
 }
 
 path {
   fill: none;
-  stroke: #420D33;
+  stroke: #ceadc5;
   opacity: .2;
 }
 
