@@ -1,28 +1,20 @@
-import { createNode, addClickListener, idGenerator } from './node_utilities'
-import { returnData } from '../data/data';
-import { merge } from 'lodash';
+import { idGenerator } from './node_utilities'
+import d3Display from '../d3/d3';
 
 export const handleRootResponse = (jsonResponse) => {
-  // const root = document.getElementById('word-tree')
-  
+  // this is an array of one object: the root word
+  const data = JSON.parse(sessionStorage.getItem('data'))
+
+  debugger
   if (jsonResponse[0] instanceof Object) {
     jsonResponse.forEach( type => {
-      // let wordType = type.fl
-      // let rootChild = createNode('li')
-      // rootChild.innerHTML = wordType;
-      // rootChild.className = 'word-type';
-      // rootChild.id = `${wordType}`;
-  
-      // debugger
       let rootChildObj = {};
       rootChildObj['id'] = idGenerator();
-      rootChildObj['parentId'] = '';
+      rootChildObj['parentId'] = 1;
       rootChildObj['wordType'] = type.fl;
       rootChildObj['word'] = type.fl;
-      rootChildObj['def'] = '';
-      rootChildObj['children'] = [];
-      
-      // debugger
+      data.push(rootChildObj)
+      debugger
 
       let syns = type.meta.syns[0];
       while (syns.length) {
@@ -31,30 +23,25 @@ export const handleRootResponse = (jsonResponse) => {
         childNode['parentId'] = rootChildObj.id;
         childNode['wordType'] = rootChildObj.wordType;
         childNode['word'] = syns.shift();
-        childNode['def'] = '';
 
-        rootChildObj['children'].push(childNode);
+        data.push(childNode)
+        debugger
       }
-
-      merge(allData, rootChildObj);
-
-
-      // let synList = createNode('ul');
-      // type.meta.syns[0].map( (syn) => {
-      //   let subLi = createNode('li')
-      //   subLi.innerHTML = syn;
-      //   subLi.id = idGenerator();
-      //   subLi.onclick = () => addClickListener();
-      //   synList.append(subLi);
-      // })
-  
-      // rootChild.append(synList);
-      // root.append(rootChild)
     })
   } else {
-    let error = createNode('li')
-    error.innerHTML = 'We\'re sorry, but the word you entered isn\'t in the thesaurus.';
-    root.append(error)
+    let errorNode = {};
+    errorNode['id'] = idGenerator();
+    errorNode['parentId'] = 1;
+    errorNode['wordType'] = '';
+    errorNode['word'] = 'We\'re sorry, but the word you entered isn\'t in the thesaurus.';
+    data.push(errorNode)
+    debugger
   }
+  
+  debugger
+  sessionStorage.setItem('data', JSON.stringify(data))
+  debugger
+
+  d3Display(data);
 
 }

@@ -1,8 +1,5 @@
-import { returnData } from '../data/data';
-
-export default class d3 {
-
-  constructor() {
+export default (data) => {
+  debugger
     // Set up the display area
     const margin = { top: 20, right: 50, bottom: 20, left: 50 };
     const width = window.innerWidth - margin.right - margin.left;
@@ -17,12 +14,11 @@ export default class d3 {
 
     // set up the data structure
     debugger
-    const allData = returnData();
-    if (allData.length !== 0) {
+    if (data.length !== 0) {
       const hierarchicalData = d3.stratify()
         .id((d) => { return d.id })
         .parentId((d) => { return d.parentId })
-        (allData);
+        (data);
 
       const tree = (data) => {
         data.dx = 30;
@@ -63,5 +59,4 @@ export default class d3 {
         .attr("x", d => { return d.y - 5 })
         .attr("y", d => { return d.x - 10 })
     }
-  }
 }

@@ -1,23 +1,14 @@
 import { handleRootResponse } from './root_reponse_handling'
-import { returnData } from '../data/data';
 
 const form = document.getElementById('search-form')
-// const wordTree = document.getElementById('word-tree')
 let query;
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-
+  
+  // need to clear storage on new query
   debugger
 
-  // returnData = []
-  // while (wordTree.firstChild) {
-  //   wordTree.removeChild(wordTree.firstChild)
-  // }
-  // while (allData) {
-  //   allData = {}
-  // }
-  
   query = document.getElementById('search-field').value
 
   const apiKey = '9451e38b-3466-430f-92df-a7a61487cf03'
@@ -29,15 +20,12 @@ form.addEventListener('submit', (e) => {
   root['wordType'] = '';
   root['word'] = query;
 
-  returnData.push(root)
+  sessionStorage.setItem('data', JSON.stringify([root]))
 
   debugger
 
   fetch(url)
-    .then(response => { 
-      return response.json() })
-    .then( jsonResponse => {
-      handleRootResponse(jsonResponse)})
-    .catch(error => {
-      console.log(error)})
+    .then(response => { return response.json() })
+    .then( jsonResponse => { handleRootResponse(jsonResponse) })
+    .catch(error => { console.log(error) })
 })
