@@ -1,7 +1,12 @@
+html {
+  background: #EEECF2;
+}
+
 #app {
   display: flex;
   align-items: center;
   font-family: sans-serif;
+  font-size: 1em;
 }
 
 nav {
@@ -10,7 +15,6 @@ nav {
   align-items: center;
   justify-content: flex-start;
   width: 130px;
-  background: #f1eeee;
   height: -webkit-fill-available;
   margin: 0;
   padding: 10px;
@@ -59,12 +63,18 @@ main {
 }
 
 circle {
-  stroke: black;
+  stroke: #420D33;
   stroke-width: 2px;
 }
 
 path {
   fill: none;
-  stroke: black;
-  opacity: .6;
+  stroke: #420D33;
+  opacity: .15;
+}
+
+text {
+  font-size: 1.1em;
+  fill: #420D33;
+  font-family: 'Mate', serif;
 }

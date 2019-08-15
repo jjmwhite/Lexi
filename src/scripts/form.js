@@ -6,7 +6,7 @@ let query;
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   
-  // need to clear storage on new query
+  d3.select('svg').remove();
   debugger
 
   query = document.getElementById('search-field').value
