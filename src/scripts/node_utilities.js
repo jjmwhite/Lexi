@@ -20,6 +20,10 @@ export const addClickListener = () => {
   )
 }
 
+export const supplyParentData = () => {
+  
+}
+
 export const idGenerator = () => {
   return Math.floor(Math.random() * Math.floor(10000))
 }

@@ -1,26 +1,29 @@
 import { handleRootResponse } from './root_reponse_handling'
 
 const form = document.getElementById('search-form')
-const wordTree = document.getElementById('word-tree')
 let query;
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   
-  while (wordTree.firstChild) {
-    wordTree.removeChild(wordTree.firstChild)
-  }
-  
+  d3.select('svg').remove();
+
   query = document.getElementById('search-field').value
 
   const apiKey = '9451e38b-3466-430f-92df-a7a61487cf03'
   let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`;
 
+  const root = {};
+  root['id'] = 1;
+  root['parentId'] = '';
+  root['wordType'] = '';
+  root['word'] = query;
+  // eventually don't display this word
+
+  sessionStorage.setItem('data', JSON.stringify([root]))
+
   fetch(url)
-    .then(response => { 
-      return response.json() })
-    .then( jsonResponse => {
-      handleRootResponse(jsonResponse)})
-    .catch(error => {
-      console.log(error)})
+    .then(response => { return response.json() })
+    .then( jsonResponse => { handleRootResponse(jsonResponse) })
+    .catch(error => { console.log(error) })
 })
