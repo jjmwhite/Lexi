@@ -1,7 +1,6 @@
 import { fetchChildNode } from '../scripts/fetch_child_node';
 
 export default (data) => {
-  debugger
   d3.select('svg').remove();
     // Set up the display area
   const margin = { top: 20, right: 50, bottom: 20, left: 50 };
@@ -16,7 +15,6 @@ export default (data) => {
     .attr("transform", `translate(50, ${height / 2})`)
 
   // set up the data structure
-  debugger
   if (data.length !== 0) {
     const hierarchicalData = d3.stratify()
       .id((d) => { return d.id })
@@ -46,8 +44,6 @@ export default (data) => {
 
     d3.selectAll("circle")
       .on("click", (e) => {
-        debugger
-        // e.stopImmediatePropagation();
         fetchChildNode(e)
       })
 

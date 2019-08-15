@@ -2,9 +2,9 @@ import { idGenerator } from './node_utilities'
 import d3Display from '../d3/d3';
 
 export const fetchChildNode = (args) => {
-  debugger
   const query = args.data.word;
   const parentId = args.data.id;
+  const parentWord = args.data.word
   const wordType = args.data.wordType;
 
   const apiKey = '9451e38b-3466-430f-92df-a7a61487cf03'
@@ -12,24 +12,23 @@ export const fetchChildNode = (args) => {
 
   fetch(url)
     .then(response => { return response.json() })
-    .then(jsonResponse => {
-      debugger
-      handleChildResponse(jsonResponse, wordType, parentId)
+    .then(jsonResponse => {  
+      handleChildResponse(jsonResponse, wordType, parentId, parentWord)
     })
     .catch(error => console.log(error))
 }
 
-const handleChildResponse = (jsonResponse, wordType, parentId) => {
+const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
 
   const data = JSON.parse(sessionStorage.getItem('data'));
+  
   debugger
-
   if (jsonResponse[0] instanceof Object) {
-    jsonResponse.forEach(type => {
+    jsonResponse.forEach(type => { 
       debugger
-      if (type.fl === wordType) {
+      if (type.fl === wordType && type.meta.id === parentWord) {
+        debugger
         type.meta.syns[0].map( (syn) => {
-          debugger
           let childNode = {};
           childNode['id'] = idGenerator();
           childNode['parentId'] = parentId;
@@ -50,7 +49,6 @@ const handleChildResponse = (jsonResponse, wordType, parentId) => {
   }
 
   sessionStorage.setItem('data', JSON.stringify(data))
-  debugger
 
   d3Display(data);
 }

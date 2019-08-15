@@ -7,7 +7,6 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   
   d3.select('svg').remove();
-  debugger
 
   query = document.getElementById('search-field').value
 
@@ -19,10 +18,9 @@ form.addEventListener('submit', (e) => {
   root['parentId'] = '';
   root['wordType'] = '';
   root['word'] = query;
+  // eventually don't display this word
 
   sessionStorage.setItem('data', JSON.stringify([root]))
-
-  debugger
 
   fetch(url)
     .then(response => { return response.json() })
