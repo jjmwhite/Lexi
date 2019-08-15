@@ -3,17 +3,17 @@ import { fetchChildNode } from '../scripts/fetch_child_node';
 function handleMouseover() {
   d3.select(this)
     .transition()
-    .duration(300)
+    .duration(100)
+    .attr('r', 8)
     .attr('fill', '#7f1661')
-    .attr('r', 7)
 }
 
 function handleMouseout() {
   d3.select(this)
     .transition()
-    .duration(300)
+    .duration(100)
+    .attr('r', 5)
     .attr('fill', '#420D33')
-    .attr('r', 4)
 }
 
 export default (data) => {
@@ -56,7 +56,7 @@ export default (data) => {
     circles.enter().append("circle")
       .attr("cx", d => { return d.y })
       .attr("cy", d => { return d.x })
-      .attr("r", 4);
+      .attr("r", 5);
 
     d3.selectAll("circle")
       .on("click", d => { fetchChildNode(d) })
