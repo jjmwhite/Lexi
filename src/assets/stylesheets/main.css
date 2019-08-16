@@ -12,7 +12,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 180px;
   height: 100%;
   position: fixed;
@@ -42,6 +42,7 @@ h2 {
 .personal-links {
   margin: 10px 0 20px 0;
   display: flex;
+  justify-content: center;
 }
 
 nav a {
@@ -50,6 +51,10 @@ nav a {
 
 .fab {
   color: #420D33;
+}
+
+.fab:hover {
+  color: #8f1e6f;
 }
 
 #search-form {
@@ -95,6 +100,23 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background: #8f1e6f;
+  cursor: pointer;
+}
+
+#reset {
+  font-family: 'Krub', sans-serif;
+  font-size: 16px;
+  border: none;
+  background: none;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  width: 60px;
+  cursor: pointer;
+}
+
+#reset:hover {
+  color: #8f1e6f;
+  border-bottom: 1px solid #8f1e6f;
 }
 
 circle {
@@ -109,9 +131,13 @@ path {
 }
 
 text {
-  /* font-size: 1.1em; */
   fill: #420D33;
   font-family: 'Mate', serif;
+}
+
+text:hover {
+  fill: #8f1e6f;
+  cursor: pointer;
 }
 
 *:focus {

@@ -8,21 +8,22 @@ form.addEventListener('submit', (e) => {
   
   d3.select('svg').remove();
 
-  query = document.getElementById('search-field').value
+  query = document.getElementById('search-field')
 
   const apiKey = '9451e38b-3466-430f-92df-a7a61487cf03'
-  let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`;
+  let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${query.value}?key=${apiKey}`;
 
   const root = {};
   root['id'] = '_1';
   root['parentId'] = '';
   root['wordType'] = '';
-  root['word'] = query;
+  root['word'] = query.value;
 
   sessionStorage.setItem('data', JSON.stringify([root]))
 
   fetch(url)
     .then(response => { return response.json() })
     .then( jsonResponse => { handleRootResponse(jsonResponse) })
+    .then(query.value = '')
     .catch(error => { console.log(error) })
 })

@@ -23,10 +23,11 @@ const showDef = d3.select("main")
   .style("visibility", "hidden")
   .style("background", "#ceadc5")
   .style("border-radius", "10px")
-  .style("color", '#7f1661')
+  .style("color", '#420D33')
   .style("width", "150px")
-  .style("padding", "5px")
+  .style("padding", "8px")
   .style("font-family", "'Krub', sans-serif")
+  .style("font-size", "14px")
   .style('text-align', "left")
   .text("");
 
@@ -44,7 +45,7 @@ export default (data) => {
     .attr("viewBox", [0, 0, (width + margin.right + margin.left), (height + margin.top + margin.bottom)])
     .append("g")
 
-  const treeLayout = d3.tree().size([(height - margin.top), (width - margin.left - margin.right - 50)])
+  const treeLayout = d3.tree().size([(height - margin.top), (width - margin.left - margin.right - 70)])
 
   // set up the data structure
   if (data.length !== 0) {
@@ -86,6 +87,7 @@ export default (data) => {
       .attr("x", d => { return d.y + 18 })
       .attr("y", d => { return d.x + 15 })
       .attr("font-size", function(d) { return `${1.05 - (0.01 * d.depth)}em` })
+      .on("click", d => { fetchChildNode(d) })
       .on("mouseover", function(d) {
         if (d.data.def) {
           showDef.text(d.data.def)

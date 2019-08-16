@@ -45,7 +45,7 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
     errorNode['id'] = idGenerator();
     errorNode['parentId'] = parentId;
     errorNode['wordType'] = '';
-    errorNode['word'] = 'We\'re sorry, but the word you entered isn\'t in the thesaurus.';
+    errorNode['word'] = `Sorry, no synonyms for ${parentWord}.`;
     data.push(errorNode)
   }
 
