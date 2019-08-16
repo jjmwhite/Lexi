@@ -78,7 +78,7 @@ input[type="text"] {
   width: 150px;
   padding: 5px;
   font-family: 'Mate', serif;
-  font-size: 16px;
+  font-size: 1.2em;
   text-align: center;
   color: #420D33;
 }
@@ -86,7 +86,7 @@ input[type="text"] {
 input[type="submit"] {
   background: #420D33;
   color: #EEECF2;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
   border-radius: 20px;
   padding: 10px;

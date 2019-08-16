@@ -32,6 +32,7 @@ const showDef = d3.select("main")
 
 export default (data) => {
   d3.select('svg').remove();
+
     // Set up the display area
   const margin = { top: 20, right: 50, bottom: 20, left: 50 };
   const width = window.innerWidth - margin.right - margin.left;
@@ -39,6 +40,7 @@ export default (data) => {
 
   const displayArea = d3.select("main")
     .append("svg")
+    .attr("viewBox", [0, 0, width, height])
     .attr("width", width + margin.right + margin.left)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -54,7 +56,7 @@ export default (data) => {
     const tree = (data) => {
       data.dx = 30;
       data.dy = width / (data.height + 1);
-      return d3.tree().nodeSize([data.dx, data.dy])(data);
+      return d3.tree().size(height, width).nodeSize([data.dx, data.dy])(data);
     }
 
     const dataTree = tree(hierarchicalData);
@@ -92,8 +94,8 @@ export default (data) => {
 
     words.enter().append("text")
       .text(d => { return d.data.word })
-      .attr("x", d => { return d.y - 5 })
-      .attr("y", d => { return d.x - 10 })
+      .attr("x", d => { return d.y + 10 })
+      .attr("y", d => { return d.x + 5 })
       .on("mouseover", function(d) {
         if (d.data.def) {
           showDef.text(d.data.def)

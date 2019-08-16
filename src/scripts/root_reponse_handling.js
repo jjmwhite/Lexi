@@ -1,5 +1,5 @@
 import { idGenerator } from './node_utilities'
-import d3Display from '../d3/d3';
+import d3Display from '../d3/d3_movement';
 
 export const handleRootResponse = (jsonResponse) => {
   // this is an array of one object: the root word

@@ -1,5 +1,5 @@
 import { idGenerator } from './node_utilities'
-import d3Display from '../d3/d3';
+import d3Display from '../d3/d3_movement';
 
 export const fetchChildNode = (args) => {
   const query = args.data.word;
@@ -31,7 +31,6 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
         })
         
         type.meta.syns[0].map( (syn) => {
-          // can we access the parent node to add/update def?
           let childNode = {};
           childNode['id'] = idGenerator();
           childNode['parentId'] = parentId;
@@ -40,6 +39,14 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
           childNode['def'] = 'click to see definition and synonyms';
           data.push(childNode);
         })
+      } else if (type.fl !== wordType && type.meta.id === parentWord) {
+        debugger
+        // let errorNode = {};
+        // errorNode['id'] = idGenerator();
+        // errorNode['parentId'] = parentId;
+        // errorNode['wordType'] = '';
+        // errorNode['word'] = `No other ${wordType}s found for ${type.meta.id}`;
+        // data.push(errorNode)
       }
     })
   } else {
