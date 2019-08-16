@@ -16,6 +16,20 @@ function handleMouseout() {
     .attr('r', 4)
 }
 
+const showDef = d3.select("main")
+  .append("div")
+  .style("position", "absolute")
+  .style("z-index", 100)
+  .style("visibility", "hidden")
+  .style("background", "#ceadc5")
+  .style("border-radius", "10px")
+  .style("color", '#7f1661')
+  .style("width", "150px")
+  .style("padding", "5px")
+  .style("font-family", "'Krub', sans-serif")
+  .style('text-align', "left")
+  .text("");
+
 export default (data) => {
   d3.select('svg').remove();
     // Set up the display area
@@ -80,9 +94,18 @@ export default (data) => {
       .text(d => { return d.data.word })
       .attr("x", d => { return d.y - 5 })
       .attr("y", d => { return d.x - 10 })
-
-    d3.selectAll("text")
-      .on("hover", e => {
+      .on("mouseover", function(d) {
+        if (d.data.def) {
+          showDef.text(d.data.def)
+          return showDef.style("visibility", "visible")
+        }
+      })
+      .on("mousemove", function() {
+        debugger
+        return showDef.style("top", (d3.event.clientY + 20) + "px").style("left", (d3.event.clientX - 180) + "px")
+      })
+      .on("mouseout", function(){
+        return showDef.style("visibility", "hidden")
       })
   }
 }

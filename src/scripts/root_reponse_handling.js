@@ -14,7 +14,7 @@ export const handleRootResponse = (jsonResponse) => {
         rootChildObj['parentId'] = 1;
         rootChildObj['wordType'] = type.fl;
         rootChildObj['word'] = type.fl;
-        rootChildObj['defs'] = type.shortdef; //array of defs
+        rootChildObj['def'] = type.shortdef[0]; //array of defs
         data.push(rootChildObj)
 
         let syns = type.meta.syns[0];
@@ -23,6 +23,7 @@ export const handleRootResponse = (jsonResponse) => {
           childNode['id'] = idGenerator();
           childNode['parentId'] = rootChildObj.id;
           childNode['wordType'] = rootChildObj.wordType;
+          childNode['def'] = rootChildObj.def;
           childNode['word'] = syns.shift();
           data.push(childNode)
         }
