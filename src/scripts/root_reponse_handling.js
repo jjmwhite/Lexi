@@ -11,7 +11,7 @@ export const handleRootResponse = (jsonResponse) => {
       if (type.meta.id === root.word) {
         let rootChildObj = {};
         rootChildObj['id'] = idGenerator();
-        rootChildObj['parentId'] = 1;
+        rootChildObj['parentId'] = "_1";
         rootChildObj['wordType'] = type.fl;
         rootChildObj['word'] = type.fl;
         rootChildObj['def'] = type.shortdef[0];

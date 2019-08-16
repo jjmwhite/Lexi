@@ -14,7 +14,7 @@ form.addEventListener('submit', (e) => {
   let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`;
 
   const root = {};
-  root['id'] = 1;
+  root['id'] = "_1";
   root['parentId'] = '';
   root['wordType'] = '';
   root['word'] = query;

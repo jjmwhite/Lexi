@@ -22,7 +22,6 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
 
   const data = JSON.parse(sessionStorage.getItem('data'));
   
-  debugger
   if (jsonResponse[0] instanceof Object) {
     jsonResponse.forEach(type => { 
       if (type.fl === wordType && type.meta.id === parentWord) {
@@ -31,7 +30,6 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
         })
         
         type.meta.syns[0].map( (syn) => {
-          // can we access the parent node to add/update def?
           let childNode = {};
           childNode['id'] = idGenerator();
           childNode['parentId'] = parentId;

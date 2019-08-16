@@ -32,7 +32,7 @@ const showDef = d3.select("main")
 
 export default (data) => {
   d3.select('svg').remove();
-  const margin = { top: 20, right: 50, bottom: 20, left: 50 };
+  const margin = { top: 50, right: 50, bottom: 50, left: 50 };
   const main = document.getElementsByTagName("main")[0]
   const width = main.clientWidth - margin.right - margin.left;
   const height = main.clientHeight - margin.top - margin.bottom;
@@ -41,12 +41,12 @@ export default (data) => {
   d3.select("main").append("svg")
   const displayArea = d3.select("svg")
 
-  const treeLayout = d3.tree().size([height, width])
+  const treeLayout = d3.tree().size([height - margin.top, width - margin.left])
 
   const zoomImg = displayArea
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-    .attr("viewBox", [0, 0, (width + margin.right + margin.left), (height + margin.left + margin.right)])
+    .attr("viewBox", [0, 0, (width + margin.right + margin.left), (height + margin.top + margin.bottom)])
 
     .append("g")
 
@@ -61,15 +61,15 @@ export default (data) => {
       .id((d) => { return d.id })
       .parentId((d) => { return d.parentId })
       (data);
-    const dataTree = treeLayout(hierarchicalData);
-
+    const dataTree = treeLayout(hierarchicalData)
+    
     // Add nodes for each descendant in the tree
     const circles = displayArea.append("g").selectAll("circle")
-      .data(dataTree.descendants());
-
+      .data(dataTree.descendants())
+ 
     circles.enter().append("circle")
-      .attr("cx", d => { return d.y })
-      .attr("cy", d => { return d.x })
+      .attr("cx", d => { return d.y + 10 })
+      .attr("cy", d => { return d.x + 10 })
       .attr("r", 4);
 
     d3.selectAll("circle")
@@ -83,8 +83,8 @@ export default (data) => {
 
     connections.enter().append("path")
       .attr("d", d3.linkHorizontal()
-        .x(d => d.y)
-        .y(d => d.x));
+        .x(d => d.y + 10 )
+        .y(d => d.x + 10 ));
 
     // Add words and position relative to nodes
     const words = displayArea.append("g").selectAll("text")
@@ -92,8 +92,8 @@ export default (data) => {
 
     words.enter().append("text")
       .text(d => { return d.data.word })
-      .attr("x", d => { return d.y - 5 })
-      .attr("y", d => { return d.x - 10 })
+      .attr("x", d => { return d.y + 18 })
+      .attr("y", d => { return d.x + 15 })
       .on("mouseover", function(d) {
         if (d.data.def) {
           showDef.text(d.data.def)
