@@ -109,7 +109,7 @@ path {
 }
 
 text {
-  font-size: 1.1em;
+  /* font-size: 1.1em; */
   fill: #420D33;
   font-family: 'Mate', serif;
 }

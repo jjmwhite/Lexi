@@ -11,7 +11,7 @@ export const handleRootResponse = (jsonResponse) => {
       if (type.meta.id === root.word) {
         let rootChildObj = {};
         rootChildObj['id'] = idGenerator();
-        rootChildObj['parentId'] = "_1";
+        rootChildObj['parentId'] = '_1';
         rootChildObj['wordType'] = type.fl;
         rootChildObj['word'] = type.fl;
         rootChildObj['def'] = type.shortdef[0];
@@ -32,7 +32,7 @@ export const handleRootResponse = (jsonResponse) => {
   } else {
     let errorNode = {};
     errorNode['id'] = idGenerator();
-    errorNode['parentId'] = 1;
+    errorNode['parentId'] = '_1';
     errorNode['wordType'] = '';
     errorNode['word'] = 'We\'re sorry, but the word you entered isn\'t in the thesaurus.';
     data.push(errorNode)

@@ -37,23 +37,14 @@ export default (data) => {
   const width = main.clientWidth - margin.right - margin.left;
   const height = main.clientHeight - margin.top - margin.bottom;
 
-  // viewbox zoom not functional but keeps thing in boundary ?!
   d3.select("main").append("svg")
   const displayArea = d3.select("svg")
-
-  const treeLayout = d3.tree().size([height - margin.top, width - margin.left])
-
-  const zoomImg = displayArea
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .attr("viewBox", [0, 0, (width + margin.right + margin.left), (height + margin.top + margin.bottom)])
-
     .append("g")
 
-  displayArea.call(d3.zoom()
-    .on("zoom", () => {
-      zoomImg.attr("transform", d3.event.transform)
-    }))
+  const treeLayout = d3.tree().size([height - margin.top, width - margin.left])
 
   // set up the data structure
   if (data.length !== 0) {
@@ -88,12 +79,13 @@ export default (data) => {
 
     // Add words and position relative to nodes
     const words = displayArea.append("g").selectAll("text")
-      .data(dataTree.descendants());
-
-    words.enter().append("text")
+      .data(dataTree.descendants())
+      
+      words.enter().append("text")
       .text(d => { return d.data.word })
       .attr("x", d => { return d.y + 18 })
       .attr("y", d => { return d.x + 15 })
+      .attr("font-size", function(d) { return `${1.05 - (0.01 * d.depth)}em` })
       .on("mouseover", function(d) {
         if (d.data.def) {
           showDef.text(d.data.def)
