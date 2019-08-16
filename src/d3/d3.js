@@ -44,7 +44,7 @@ export default (data) => {
     .attr("viewBox", [0, 0, (width + margin.right + margin.left), (height + margin.top + margin.bottom)])
     .append("g")
 
-  const treeLayout = d3.tree().size([height - margin.top, width - margin.left])
+  const treeLayout = d3.tree().size([(height - margin.top), (width - margin.left - margin.right - 50)])
 
   // set up the data structure
   if (data.length !== 0) {
