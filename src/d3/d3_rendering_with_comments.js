@@ -32,12 +32,26 @@ const showDef = d3.select("main")
 
 export default (data) => {
   d3.select('svg').remove();
+  // Set up the display area
   const margin = { top: 20, right: 50, bottom: 20, left: 50 };
+  // const width = window.innerWidth; --
+  // const height = window.innerHeight; --
+  // debugger
+
+  // const width = window.innerWidth - margin.right - margin.left;
+  // const height = window.innerHeight - margin.top - margin.bottom;
+
+  // const displayArea = d3.select("main")
+  //   .append("svg")
+  //   .attr("viewBox", [0, 0, width, height])
+  //   // .attr("heigh", height)
+  //   // .attr("width", width)
+  //   .append("g")
+  //   .attr("transform", `translate(50, ${height / 2})`)
   const main = document.getElementsByTagName("main")[0]
   const width = main.clientWidth - margin.right - margin.left;
   const height = main.clientHeight - margin.top - margin.bottom;
 
-  // viewbox zoom not functional but keeps thing in boundary ?!
   d3.select("main").append("svg")
   const displayArea = d3.select("svg")
 
@@ -50,6 +64,9 @@ export default (data) => {
 
     .append("g")
 
+  // const g = zoomImg.append("g")
+  //   .attr("transform", `translate(${margin.left}, ${margin.top})`)
+
   displayArea.call(d3.zoom()
     .on("zoom", () => {
       zoomImg.attr("transform", d3.event.transform)
@@ -61,7 +78,23 @@ export default (data) => {
       .id((d) => { return d.id })
       .parentId((d) => { return d.parentId })
       (data);
+
+    // const tree = (data) => {
+    //   data.dx = 30;
+    //   data.dy = width / (data.height + 1);
+    //   return d3.tree().nodeSize([data.dx, data.dy])(data);
+    // }
+
+    //tree size vs. node size?
+
+    // const tree = (data) => d3.tree(data).size([height, width])
+
     const dataTree = treeLayout(hierarchicalData);
+    // const dataTree = tree(hierarchicalData);
+
+    // TESTING//
+    console.log(dataTree.descendants());
+    ////////////
 
     // Add nodes for each descendant in the tree
     const circles = displayArea.append("g").selectAll("circle")
@@ -94,16 +127,16 @@ export default (data) => {
       .text(d => { return d.data.word })
       .attr("x", d => { return d.y - 5 })
       .attr("y", d => { return d.x - 10 })
-      .on("mouseover", function(d) {
+      .on("mouseover", function (d) {
         if (d.data.def) {
           showDef.text(d.data.def)
           return showDef.style("visibility", "visible")
         }
       })
-      .on("mousemove", function() {
+      .on("mousemove", function () {
         return showDef.style("top", (d3.event.clientY + 20) + "px").style("left", (d3.event.clientX - 180) + "px")
       })
-      .on("mouseout", function(){
+      .on("mouseout", function () {
         return showDef.style("visibility", "hidden")
       })
   }
