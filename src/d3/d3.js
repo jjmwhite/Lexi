@@ -101,7 +101,6 @@ export default (data) => {
         }
       })
       .on("mousemove", function() {
-        debugger
         return showDef.style("top", (d3.event.clientY + 20) + "px").style("left", (d3.event.clientX - 180) + "px")
       })
       .on("mouseout", function(){

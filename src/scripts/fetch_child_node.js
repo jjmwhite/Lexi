@@ -25,16 +25,19 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
   debugger
   if (jsonResponse[0] instanceof Object) {
     jsonResponse.forEach(type => { 
-      debugger
       if (type.fl === wordType && type.meta.id === parentWord) {
-        debugger
+        data.forEach( d => {
+          if (d.id === parentId) { d.def = type.shortdef[0] }
+        })
+        
         type.meta.syns[0].map( (syn) => {
+          // can we access the parent node to add/update def?
           let childNode = {};
           childNode['id'] = idGenerator();
           childNode['parentId'] = parentId;
           childNode['wordType'] = wordType;
           childNode['word'] = syn;
-          childNode['def'] = type.shortdef[0];
+          childNode['def'] = 'click to see definition and synonyms';
           data.push(childNode);
         })
       }
