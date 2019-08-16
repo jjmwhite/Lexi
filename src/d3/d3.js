@@ -34,15 +34,43 @@ export default (data) => {
   d3.select('svg').remove();
     // Set up the display area
   const margin = { top: 20, right: 50, bottom: 20, left: 50 };
-  const width = window.innerWidth - margin.right - margin.left;
-  const height = window.innerHeight - margin.top - margin.bottom;
+  // const width = window.innerWidth; --
+  // const height = window.innerHeight; --
+  // debugger
 
-  const displayArea = d3.select("main")
-    .append("svg")
-    .attr("width", width + margin.right + margin.left)
+  // const width = window.innerWidth - margin.right - margin.left;
+  // const height = window.innerHeight - margin.top - margin.bottom;
+
+  // const displayArea = d3.select("main")
+  //   .append("svg")
+  //   .attr("viewBox", [0, 0, width, height])
+  //   // .attr("heigh", height)
+  //   // .attr("width", width)
+  //   .append("g")
+  //   .attr("transform", `translate(50, ${height / 2})`)
+  const main = document.getElementsByTagName("main")[0]
+  const width = main.clientWidth - margin.right - margin.left;
+  const height = main.clientHeight - margin.top - margin.bottom;
+
+  d3.select("main").append("svg")
+  const displayArea = d3.select("svg")
+
+  const treeLayout = d3.tree().size([height, width])
+
+  const zoomImg = displayArea
+    .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .attr("viewBox", [0, 0, (width + margin.right + margin.left), (height + margin.left + margin.right)])
+
     .append("g")
-    .attr("transform", `translate(50, ${height / 2})`)
+
+  // const g = zoomImg.append("g")
+  //   .attr("transform", `translate(${margin.left}, ${margin.top})`)
+
+  displayArea.call(d3.zoom()
+    .on("zoom", () => {
+      zoomImg.attr("transform", d3.event.transform)
+    }))
 
   // set up the data structure
   if (data.length !== 0) {
@@ -51,13 +79,18 @@ export default (data) => {
       .parentId((d) => { return d.parentId })
       (data);
 
-    const tree = (data) => {
-      data.dx = 30;
-      data.dy = width / (data.height + 1);
-      return d3.tree().nodeSize([data.dx, data.dy])(data);
-    }
+    // const tree = (data) => {
+    //   data.dx = 30;
+    //   data.dy = width / (data.height + 1);
+    //   return d3.tree().nodeSize([data.dx, data.dy])(data);
+    // }
+    
+    //tree size vs. node size?
 
-    const dataTree = tree(hierarchicalData);
+    // const tree = (data) => d3.tree(data).size([height, width])
+
+    const dataTree = treeLayout(hierarchicalData);
+    // const dataTree = tree(hierarchicalData);
 
     // TESTING//
     console.log(dataTree.descendants());
