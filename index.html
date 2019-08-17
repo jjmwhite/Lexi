@@ -15,16 +15,28 @@
 <body>
   <div id='app'>
     <nav>
-      <h1>LEXI</h1>
-      <h2>VISUAL THESAURUS</h2>
-      <div class='personal-links'>
-        <a href="https://github.com/jjmwhite/Lexi"><i class="fab fa-github-alt"></i></a>
-        <a href="https://www.linkedin.com/in/jessicajmwhite/"><i class="fab fa-linkedin-in"></i></a>
+      <div>
+        <h1>LEXI</h1>
+        <h2>VISUAL THESAURUS</h2>
+        <div class='personal-links'>
+          <a target="_blank" href="https://github.com/jjmwhite/Lexi"><i class="fab fa-github-alt"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/jessicajmwhite/"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <form id='search-form'>
+          <input id='search-field' autocomplete="off" type="text" placeholder='Find a synonym...' value=''>
+          <input type='submit' value='SEARCH'>
+        </form>
       </div>
+      <div>
+        <button id='reset'>RESET</button>
+      </div>
+<<<<<<< HEAD
       <form id='search-form'>
         <input id='search-field' type="text" placeholder='Find a synonym...' value=''>
         <input type='submit' value='SEARCH'>
       </form>
+=======
+>>>>>>> master
     </nav>
 
     <!-- root word goes here -->

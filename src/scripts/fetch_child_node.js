@@ -22,7 +22,6 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
 
   const data = JSON.parse(sessionStorage.getItem('data'));
   
-  debugger
   if (jsonResponse[0] instanceof Object) {
     jsonResponse.forEach(type => { 
       if (type.fl === wordType && type.meta.id === parentWord) {
@@ -54,7 +53,7 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
     errorNode['id'] = idGenerator();
     errorNode['parentId'] = parentId;
     errorNode['wordType'] = '';
-    errorNode['word'] = 'We\'re sorry, but the word you entered isn\'t in the thesaurus.';
+    errorNode['word'] = `Sorry, no synonyms for ${parentWord}.`;
     data.push(errorNode)
   }
 
