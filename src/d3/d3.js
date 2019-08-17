@@ -84,15 +84,10 @@ export default (data) => {
       
       words.enter().append("text")
       .text(d => { return d.data.word })
-<<<<<<< HEAD
-      .attr("x", d => { return d.y + 10 })
-      .attr("y", d => { return d.x + 5 })
-=======
       .attr("x", d => { return d.y + 18 })
       .attr("y", d => { return d.x + 15 })
       .attr("font-size", function(d) { return `${1.05 - (0.01 * d.depth)}em` })
       .on("click", d => { fetchChildNode(d) })
->>>>>>> master
       .on("mouseover", function(d) {
         if (d.data.def) {
           showDef.text(d.data.def)
