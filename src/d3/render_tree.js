@@ -61,12 +61,17 @@ export function renderTree(data, firstRender) {
 
     tree(root)
 
+    root.eachBefore(d => {
+      d.x0 = d.x;
+      d.y0 = d.y
+    })
     
     const node = nodeGroup.selectAll("g")
       .data(nodes, d => d.id);
 
     const nodeEnter = node.enter().append("g")
       .attr("transform", d => {
+        debugger
         return `translate(${d.y0 + 10}, ${d.x0 + 10})`
       })
       .attr("fill-opacity", 0)
