@@ -1,5 +1,5 @@
 import { idGenerator } from './node_utilities'
-import d3Display from '../d3/d3';
+import { renderTree } from '../d3/render_tree';
 
 export const fetchChildNode = (args) => {
   const query = args.data.word;
@@ -21,7 +21,7 @@ export const fetchChildNode = (args) => {
 const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
 
   const data = JSON.parse(sessionStorage.getItem('data'));
-  
+  debugger
   if (jsonResponse[0] instanceof Object) {
     jsonResponse.forEach(type => { 
       if (type.fl === wordType && type.meta.id === parentWord) {
@@ -51,5 +51,6 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
 
   sessionStorage.setItem('data', JSON.stringify(data))
 
-  d3Display(data);
+  const firstRender = false;
+  renderTree(data, firstRender);
 }

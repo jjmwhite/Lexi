@@ -1,7 +1,8 @@
 import { fetchChildNode } from '../scripts/fetch_child_node';
 
-export function renderTree(data, firstRender) {
-  
+export function updateTree(data) {
+  // check data format being passed -- need stratify?
+  debugger
   // set up view
   const margin = { top: 50, right: 50, bottom: 50, left: 50 };
   const main = document.getElementsByTagName("main")[0]
@@ -13,7 +14,7 @@ export function renderTree(data, firstRender) {
     .id((d) => { return d.id })
     .parentId((d) => { return d.parentId })
     (data);
-    
+
   root.y = 10;
   root.x0 = (width / 12);
   root.y0 = 0;
@@ -22,37 +23,22 @@ export function renderTree(data, firstRender) {
     d._children = d.children;
   })
 
-  let linkGroup;
-  let nodeGroup;
-  let svg;
+  // d3.select("main").append("svg")
+  const svg = d3.select("svg")
+  //   .attr("width", width + margin.left + margin.right)
+  //   .attr("height", height + margin.top + margin.bottom)
+  //   .attr("viewBox", [0, 0, (width + margin.right + margin.left), (height + margin.top + margin.bottom)])
 
-  if (firstRender) {
-    d3.select("main").append("svg")
-    svg = d3.select("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .attr("viewBox", [0, 0, (width + margin.right + margin.left), (height + margin.top + margin.bottom)])
+  const linkGroup = svg.append("g")
+    .attr("fill", "none")
+    .attr("stroke", "#ceadc5")
+    .attr("stroke-width", 1)
+    .attr("opacity", ".8")
+    .attr("transform", "translate(10, 0)")
 
-    linkGroup = svg.append("g")
-      .attr("id", "link-group")
-      .attr("fill", "none")
-      .attr("stroke", "#ceadc5")
-      .attr("stroke-width", 1)
-      .attr("opacity", ".8")
-      .attr("transform", "translate(10, 0)")
-
-    nodeGroup = svg.append("g")
-      .attr("id", "node-group")
-      .attr("cursor", "pointer")
-      .attr("transform", "translate(10, 0)")
-  }
-  // else {
-    debugger
-    svg = d3.select("svg")
-    linkGroup = d3.select("g#link-group")
-    nodeGroup = d3.select("g#node-group")
-  // }
-  
+  const nodeGroup = svg.append("g")
+    .attr("cursor", "pointer")
+    .attr("transform", "translate(10, 0)")
 
   function update(data) {
     const nodes = root.descendants().reverse();
@@ -61,7 +47,7 @@ export function renderTree(data, firstRender) {
 
     tree(root)
 
-    
+
     const node = nodeGroup.selectAll("g")
       .data(nodes, d => d.id);
 
@@ -136,7 +122,7 @@ export function renderTree(data, firstRender) {
       d.y0 = d.y
     })
   }
-  
+
   update(root)
 
   return svg.node();

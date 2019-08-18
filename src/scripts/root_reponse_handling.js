@@ -1,5 +1,5 @@
 import { idGenerator } from './node_utilities'
-import d3Display from '../d3/d3';
+import { renderTree } from '../d3/render_tree';
 
 export const handleRootResponse = (jsonResponse) => {
   // this is an array of one object: the root word
@@ -39,7 +39,10 @@ export const handleRootResponse = (jsonResponse) => {
   }
   
   sessionStorage.setItem('data', JSON.stringify(data))
-
-  d3Display(data);
+  
+  d3.select('svg').remove();
+  
+  const firstRender = true;
+  renderTree(data, firstRender);
 
 }
