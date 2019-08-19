@@ -4,7 +4,7 @@ We've all been there: you're writing something—an important email, a thoughtfu
     
 **Lexi** offers users a seamless, intuitive user experience, tracing a clear visual and verbal path from one synonym to the next until you find that perfect word.
 
-![Lexi screenshot](src/assets/images/screenshot.png)
+![Lexi screenshot](src/assets/images/screenshot_hover.png)
 
 ### Functionality and Features
 * Users enter a root word for which they'd like a synonym, and Lexi displays a path via each lexical type (noun, verb, adjective, etc.) and a list of synonyms they can choose from to begin exploring.
