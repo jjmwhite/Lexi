@@ -31,6 +31,12 @@ const showDef = d3.select("main")
   .style('text-align', "left")
   .text("");
 
+const handleClick = (d) => {
+  if (d.children === undefined) {
+    fetchChildNode(d)
+  }
+}
+
 export default (data) => {
   d3.select('svg').remove();
   const margin = { top: 50, right: 50, bottom: 50, left: 50 };
@@ -62,10 +68,10 @@ export default (data) => {
     circles.enter().append("circle")
       .attr("cx", d => { return d.y + 10 })
       .attr("cy", d => { return d.x + 10 })
-      .attr("r", 4);
-
+      .attr("r", 4)
+      
     d3.selectAll("circle")
-      .on("click", d => { fetchChildNode(d) })
+      .on("click", d => {  handleClick(d) })
       .on("mouseover", handleMouseover)
       .on("mouseout", handleMouseout)
 
@@ -87,7 +93,7 @@ export default (data) => {
       .attr("x", d => { return d.y + 18 })
       .attr("y", d => { return d.x + 15 })
       .attr("font-size", function(d) { return `${1.05 - (0.01 * d.depth)}em` })
-      .on("click", d => { fetchChildNode(d) })
+      .on("click", d => { handleClick(d) })
       .on("mouseover", function(d) {
         if (d.data.def) {
           showDef.text(d.data.def)
