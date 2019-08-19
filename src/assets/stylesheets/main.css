@@ -143,3 +143,36 @@ text:hover {
 *:focus {
   outline: none;
 }
+
+#mobile-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #EEECF2;
+  padding: 30px;
+  border-radius: 20px;
+  font-family: 'Mate', serif;
+}
+
+.modal-child > p {
+  text-align: center;
+  color: #8f1e6f;
+}
+
+.modal-child a {
+  padding: 0 5px;
+}

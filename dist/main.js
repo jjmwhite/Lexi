@@ -106,7 +106,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _form = __webpack_require__(/*! ./scripts/form */ \"./src/scripts/form.js\");\n\nvar _form2 = _interopRequireDefault(_form);\n\nvar _reset = __webpack_require__(/*! ./scripts/reset */ \"./src/scripts/reset.js\");\n\nvar _reset2 = _interopRequireDefault(_reset);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n//# sourceURL=webpack:///./src/entry.js?");
+eval("\n\nvar _mobileModal = __webpack_require__(/*! ./modal/mobile-modal */ \"./src/modal/mobile-modal.js\");\n\nvar _form = __webpack_require__(/*! ./scripts/form */ \"./src/scripts/form.js\");\n\nvar _form2 = _interopRequireDefault(_form);\n\nvar _reset = __webpack_require__(/*! ./scripts/reset */ \"./src/scripts/reset.js\");\n\nvar _reset2 = _interopRequireDefault(_reset);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nif (window.innerWidth < 800) {\n  (0, _mobileModal.openModal)();\n}\n\n// if (window.innerWidth >= 800) {\n//   closeModal();\n// }\n\n//# sourceURL=webpack:///./src/entry.js?");
+
+/***/ }),
+
+/***/ "./src/modal/mobile-modal.js":
+/*!***********************************!*\
+  !*** ./src/modal/mobile-modal.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar openModal = exports.openModal = function openModal() {\n  var modal = document.getElementById('mobile-modal');\n  modal.style.display = 'block';\n};\n\n// export const closeModal = () => {\n//   const modal = document.getElementById('mobile-modal');\n//   modal.style.display = 'none';\n// }\n\n//# sourceURL=webpack:///./src/modal/mobile-modal.js?");
 
 /***/ }),
 
