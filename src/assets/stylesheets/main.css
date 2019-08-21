@@ -36,6 +36,7 @@ h2 {
   text-align: center;
   margin: 0;
   font-size: 15px;
+  font-weight: 100;
   font-family: 'Krub', sans-serif;
 }
 
@@ -144,6 +145,7 @@ input[type="submit"]:hover {
 }
 
 #user-guide h4 {
+  font-weight: 100;
   font-size: 1.5em;
   margin-right: 5px;
 }
