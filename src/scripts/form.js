@@ -1,11 +1,12 @@
 import { handleRootResponse } from './root_reponse_handling'
+import { closeUserGuide } from '../user_guide/user_guide';
 
 const form = document.getElementById('search-form')
 let query;
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+  closeUserGuide();
   d3.select('svg').remove();
 
   query = document.getElementById('search-field')

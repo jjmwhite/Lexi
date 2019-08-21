@@ -119,6 +119,39 @@ input[type="submit"]:hover {
   border-bottom: 1px solid #8f1e6f;
 }
 
+#user-guide {
+  font-family: 'Mate', serif;
+  font-size: 1.5em;
+  text-align: center;
+  position: relative;
+  top: 25%;
+  color: #b9b8bc;
+  text-shadow: 2px 2px 6px #f6f5f5;
+}
+
+#user-guide span {
+  display: flex;
+  justify-content: center;
+}
+
+#user-guide h3 {
+  font-family: 'Krub', sans-serif;
+  font-size: 1.6em;
+  font-weight: 100;
+  align-self: center;
+  margin-left: 5px;
+  color: #430e335e;
+}
+
+#user-guide h4 {
+  font-size: 1.5em;
+  margin-right: 5px;
+}
+
+#user-guide ul {
+  list-style: none;
+}
+
 circle {
   fill: #420D33;
   cursor: pointer;

@@ -1,4 +1,4 @@
-import { openModal, closeModal } from './modal/mobile-modal';
+import { openModal } from './modal/mobile-modal';
 import Form from './scripts/form';
 import Reset from './scripts/reset';
 

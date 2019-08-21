@@ -142,7 +142,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _root_reponse_handling = __webpack_require__(/*! ./root_reponse_handling */ \"./src/scripts/root_reponse_handling.js\");\n\nvar form = document.getElementById('search-form');\nvar query = void 0;\n\nform.addEventListener('submit', function (e) {\n  e.preventDefault();\n\n  d3.select('svg').remove();\n\n  query = document.getElementById('search-field');\n\n  var apiKey = '9451e38b-3466-430f-92df-a7a61487cf03';\n  var url = 'https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query.value + '?key=' + apiKey;\n\n  var root = {};\n  root['id'] = '_1';\n  root['parentId'] = '';\n  root['wordType'] = '';\n  root['word'] = query.value;\n\n  sessionStorage.setItem('data', JSON.stringify([root]));\n\n  fetch(url).then(function (response) {\n    return response.json();\n  }).then(function (jsonResponse) {\n    (0, _root_reponse_handling.handleRootResponse)(jsonResponse);\n  }).then(query.value = '').catch(function (error) {\n    console.log(error);\n  });\n});\n\n//# sourceURL=webpack:///./src/scripts/form.js?");
+eval("\n\nvar _root_reponse_handling = __webpack_require__(/*! ./root_reponse_handling */ \"./src/scripts/root_reponse_handling.js\");\n\nvar _user_guide = __webpack_require__(/*! ../user_guide/user_guide */ \"./src/user_guide/user_guide.js\");\n\nvar form = document.getElementById('search-form');\nvar query = void 0;\n\nform.addEventListener('submit', function (e) {\n  e.preventDefault();\n  (0, _user_guide.closeUserGuide)();\n  d3.select('svg').remove();\n\n  query = document.getElementById('search-field');\n\n  var apiKey = '9451e38b-3466-430f-92df-a7a61487cf03';\n  var url = 'https://dictionaryapi.com/api/v3/references/thesaurus/json/' + query.value + '?key=' + apiKey;\n\n  var root = {};\n  root['id'] = '_1';\n  root['parentId'] = '';\n  root['wordType'] = '';\n  root['word'] = query.value;\n\n  sessionStorage.setItem('data', JSON.stringify([root]));\n\n  fetch(url).then(function (response) {\n    return response.json();\n  }).then(function (jsonResponse) {\n    (0, _root_reponse_handling.handleRootResponse)(jsonResponse);\n  }).then(query.value = '').catch(function (error) {\n    console.log(error);\n  });\n});\n\n//# sourceURL=webpack:///./src/scripts/form.js?");
 
 /***/ }),
 
@@ -179,6 +179,18 @@ eval("\n\nvar resetButton = document.getElementById('reset');\n\nresetButton.add
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.handleRootResponse = undefined;\n\nvar _node_utilities = __webpack_require__(/*! ./node_utilities */ \"./src/scripts/node_utilities.js\");\n\nvar _d = __webpack_require__(/*! ../d3/d3 */ \"./src/d3/d3.js\");\n\nvar _d2 = _interopRequireDefault(_d);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar handleRootResponse = exports.handleRootResponse = function handleRootResponse(jsonResponse) {\n  // this is an array of one object: the root word\n  var data = JSON.parse(sessionStorage.getItem('data'));\n  var root = data[0];\n\n  if (jsonResponse[0] instanceof Object) {\n    jsonResponse.forEach(function (type) {\n      if (type.meta.id === root.word) {\n        var rootChildObj = {};\n        rootChildObj['id'] = (0, _node_utilities.idGenerator)();\n        rootChildObj['parentId'] = '_1';\n        rootChildObj['wordType'] = type.fl;\n        rootChildObj['word'] = type.fl;\n        rootChildObj['def'] = type.shortdef[0];\n        data.push(rootChildObj);\n\n        var syns = type.meta.syns[0];\n        while (syns.length) {\n          var childNode = {};\n          childNode['id'] = (0, _node_utilities.idGenerator)();\n          childNode['parentId'] = rootChildObj.id;\n          childNode['wordType'] = rootChildObj.wordType;\n          childNode['def'] = 'click to see definition and synonyms';\n          childNode['word'] = syns.shift();\n          data.push(childNode);\n        }\n      }\n    });\n  } else {\n    var errorNode = {};\n    errorNode['id'] = (0, _node_utilities.idGenerator)();\n    errorNode['parentId'] = '_1';\n    errorNode['wordType'] = '';\n    errorNode['word'] = 'Sorry, no synonyms for ' + root.word + '.';\n    data.push(errorNode);\n  }\n\n  sessionStorage.setItem('data', JSON.stringify(data));\n\n  (0, _d2.default)(data);\n};\n\n//# sourceURL=webpack:///./src/scripts/root_reponse_handling.js?");
+
+/***/ }),
+
+/***/ "./src/user_guide/user_guide.js":
+/*!**************************************!*\
+  !*** ./src/user_guide/user_guide.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar closeUserGuide = exports.closeUserGuide = function closeUserGuide() {\n  debugger;\n  var userGuide = document.getElementById('user-guide');\n  userGuide.style.display = 'none';\n};\n\n//# sourceURL=webpack:///./src/user_guide/user_guide.js?");
 
 /***/ })
 
