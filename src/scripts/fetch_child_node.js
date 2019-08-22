@@ -1,4 +1,5 @@
 import { idGenerator } from './node_utilities'
+import { createErrorNode } from './create_error_node';
 import d3Display from '../d3/d3';
 
 export const fetchChildNode = (args) => {
@@ -12,23 +13,17 @@ export const fetchChildNode = (args) => {
 
   fetch(url)
     .then(response => { return response.json() })
-    .then(jsonResponse => {  
+    .then(jsonResponse => {   
       handleChildResponse(jsonResponse, wordType, parentId, parentWord)
     })
     .catch(error => console.log(error))
 }
 
 const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
-
   const data = JSON.parse(sessionStorage.getItem('data'));
-  
   if (jsonResponse[0] instanceof Object) {
     jsonResponse.forEach(type => { 
-      if (type.fl === wordType && type.meta.id === parentWord) {
-        data.forEach( d => {
-          if (d.id === parentId) { d.def = type.shortdef[0] }
-        })
-        
+      if (type.fl === wordType && type.hwi.hw === parentWord) {
         type.meta.syns[0].map( (syn) => {
           let childNode = {};
           childNode['id'] = idGenerator();
@@ -38,14 +33,13 @@ const handleChildResponse = (jsonResponse, wordType, parentId, parentWord) => {
           childNode['def'] = 'click to see definition and synonyms';
           data.push(childNode);
         })
+        data.forEach( d => {
+          if (d.id === parentId && d.def === 'click to see definition and synonyms') { d.def = type.shortdef[0] }
+        })
       }
     })
   } else {
-    let errorNode = {};
-    errorNode['id'] = idGenerator();
-    errorNode['parentId'] = parentId;
-    errorNode['wordType'] = '';
-    errorNode['word'] = `Sorry, no synonyms for ${parentWord}.`;
+    let errorNode = createErrorNode(parentWord);
     data.push(errorNode)
   }
 

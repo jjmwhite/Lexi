@@ -1,14 +1,14 @@
 import { idGenerator } from './node_utilities'
 import d3Display from '../d3/d3';
+import { createErrorNode } from './create_error_node';
 
 export const handleRootResponse = (jsonResponse) => {
   // this is an array of one object: the root word
   const data = JSON.parse(sessionStorage.getItem('data'))
   const root = data[0];
-
   if (jsonResponse[0] instanceof Object) {
     jsonResponse.forEach( type => {
-      if (type.meta.id === root.word) {
+      if (type.hwi.hw === root.word) {
         let rootChildObj = {};
         rootChildObj['id'] = idGenerator();
         rootChildObj['parentId'] = '_1';
@@ -27,15 +27,14 @@ export const handleRootResponse = (jsonResponse) => {
           childNode['word'] = syns.shift();
           data.push(childNode)
         }
+      } else if ((type.hwi.hw !== root.word && jsonResponse.length === 1)) {
+        let errorNode = createErrorNode(root.word);
+        data.push(errorNode);
       }
     })
   } else {
-    let errorNode = {};
-    errorNode['id'] = idGenerator();
-    errorNode['parentId'] = '_1';
-    errorNode['wordType'] = '';
-    errorNode['word'] = `Sorry, no synonyms for ${root.word}.`;
-    data.push(errorNode)
+    let errorNode = createErrorNode(root.word);
+    data.push(errorNode);
   }
   
   sessionStorage.setItem('data', JSON.stringify(data))
