@@ -32,7 +32,7 @@ const showDef = d3.select("main")
   .text("");
 
 const handleClick = (d) => {
-  if (d.children === undefined) {
+  if (d.children === undefined && d.data.word.includes('Sorry') === false) {
     fetchChildNode(d)
   }
 }
