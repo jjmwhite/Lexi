@@ -26,7 +26,18 @@ form.addEventListener('submit', (e) => {
 
   query = query.join('')
 
-  const apiKey = '9451e38b-3466-430f-92df-a7a61487cf03'
+  const apiKeys = {
+    '1': '9451e38b-3466-430f-92df-a7a61487cf03',
+    '2': 'ff542579-97aa-4a0b-a129-cefcb73178e2',
+    '3': '5aa03b1d-430f-48b9-8356-d89d877f72bd',
+    '4': 'd48a06f9-080c-46d4-90a9-e5f595800391'
+  } 
+
+  function getRandomKey() {
+    return Math.floor(Math.random() * 4 + 1)
+  }
+  let apiKey = apiKeys[getRandomKey()]
+  
   let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`;
 
   const root = {};
