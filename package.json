@@ -31,7 +31,6 @@
   "scripts": {
     "webpack": "webpack --config webpack.config.js ",
     "watch": "webpack --watch --mode=development --config webpack.config.js",
-    "start": "node entry.js",
     "build": "webpack --config webpack.config.js  --optimize-minimize"
   },
   "repository": {
