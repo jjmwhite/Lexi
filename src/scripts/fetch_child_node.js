@@ -3,14 +3,18 @@ import { createErrorNode } from './create_error_node';
 import d3Display from '../d3/d3';
 
 export const fetchChildNode = (args) => {
+  // TODO: aliased destructuring
+  // const { word: query, id: parentId, parentWord, wordType } = args.data;
   const query = args.data.word;
   const parentId = args.data.id;
   const parentWord = args.data.word
   const wordType = args.data.wordType;
 
+
   const apiKey = '9451e38b-3466-430f-92df-a7a61487cf03'
   let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`;
 
+  console.log('fetch child');
   fetch(url)
     .then(response => { return response.json() })
     .then(jsonResponse => {   

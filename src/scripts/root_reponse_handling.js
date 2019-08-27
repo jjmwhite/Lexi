@@ -9,8 +9,15 @@ export const handleRootResponse = (jsonResponse) => {
   if (jsonResponse[0] instanceof Object) {
     jsonResponse.forEach( type => {
       if (type.hwi.hw === root.word) {
+        // TODO initialize the object literal maybe
+        // let rootChildObj = {
+        //   id: idGenerator(),
+        //
+        // }
+
+
         let rootChildObj = {};
-        rootChildObj['id'] = idGenerator();
+        rootChildObj['id'] = idGenerator(); // TODO use dot notation for literal keys
         rootChildObj['parentId'] = '_1';
         rootChildObj['wordType'] = type.fl;
         rootChildObj['word'] = type.fl;
@@ -24,6 +31,7 @@ export const handleRootResponse = (jsonResponse) => {
           childNode['parentId'] = rootChildObj.id;
           childNode['wordType'] = rootChildObj.wordType;
           childNode['def'] = 'click to see definition and synonyms';
+          // TODO see if I can pop instead
           childNode['word'] = syns.shift();
           data.push(childNode)
         }

@@ -11,7 +11,7 @@ form.addEventListener('submit', (e) => {
 
   const searchField = document.getElementById('search-field')
   let query = searchField.value.toLowerCase().split('');
-  const charsToEscape = { 
+  const charsToEscape = { // TODO use Sets maybe
     '!': '!', '@': '@', '#': '#', '$': '$', '%': '%',
     '^': '^', '&': '&', '*': '*', '(': '(', ')': ')', 
     '{': '{', '}': '}', '[': '[', ']': ']', '|': '|', 
@@ -47,10 +47,15 @@ form.addEventListener('submit', (e) => {
   root['word'] = query;
 
   sessionStorage.setItem('data', JSON.stringify([root]))
+  console.log('fetch');
+  // TODO 
+  // - arrow functions implicitly return if u dont use body braces
+  // - if ur arrow functions take in a single arg and pass that arg to a named function, just use the function as the callback
 
+  // TODO refactor fetchWord away and decouple from form and child node
   fetch(url)
-    .then(response => { return response.json() })
-    .then( jsonResponse => { handleRootResponse(jsonResponse) })
+    .then(response => (response.json()))
+    .then(handleRootResponse)
     .then(searchField.value = '')
-    .catch(error => { console.log(error) })
+    .catch(console.log)
 })

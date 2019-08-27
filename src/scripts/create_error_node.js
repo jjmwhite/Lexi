@@ -7,4 +7,4 @@ export const createErrorNode = (word) => {
   errorNode['wordType'] = '';
   errorNode['word'] = `Sorry, no synonyms for ${word}.`;
   return errorNode;
-}
+};
