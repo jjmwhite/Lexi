@@ -2,7 +2,6 @@
   "main": "webpack.c.js",
   "dependencies": {
     "d3": "^5.9.7",
-    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "save": "^2.4.0",
@@ -15,7 +14,6 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^3.1.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack-dev-server": "^3.7.2",
     "autoprefixer": "^9.6.1",
@@ -38,6 +36,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrcjbradley/new_js_project.git"
+    "url": "https://github.com/jjmwhite/Lexi.git"
   }
 }
