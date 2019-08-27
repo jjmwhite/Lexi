@@ -33,7 +33,8 @@
   "scripts": {
     "webpack": "webpack --config webpack.config.js ",
     "watch": "webpack --watch --mode=development --config webpack.config.js",
-    "build": "webpack --config webpack.config.js  --optimize-minimize"
+    "build": "webpack --config webpack.config.js  --optimize-minimize",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
