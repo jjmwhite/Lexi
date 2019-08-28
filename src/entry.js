@@ -1,7 +1,6 @@
 import { openModal } from './modal/mobile-modal';
+import { mwLogoHover } from './scripts/mw_mouseover';
 import Form from './scripts/form';
 import Reset from './scripts/reset';
 
-if (window.innerWidth < 800) {
-  openModal()
-}
+if (window.innerWidth < 800) openModal();

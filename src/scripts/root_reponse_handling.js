@@ -1,4 +1,4 @@
-import { idGenerator } from './node_utilities'
+import { idGenerator } from './node_utilities';
 import { createErrorNode } from './create_error_node';
 import d3Display from '../d3/d3';
 
@@ -16,7 +16,7 @@ export const handleRootResponse = (jsonResponse) => {
           word: type.fl,
           def: type.shortdef
         };
-        data.push(rootChildObj)
+        data.push(rootChildObj);
 
         let syns = type.meta.syns[0];
         while (syns.length) {
@@ -27,7 +27,7 @@ export const handleRootResponse = (jsonResponse) => {
             word: syns.pop(),
             def: 'click to see definition and synonyms'
           };
-          data.push(childNode)
+          data.push(childNode);
         }
       } else if ((type.hwi.hw !== root.word && idx === 0)) {
         let errorNode = createErrorNode(root.word);
@@ -39,6 +39,6 @@ export const handleRootResponse = (jsonResponse) => {
     data.push(errorNode);
   }
 
-  sessionStorage.setItem('data', JSON.stringify(data))
+  sessionStorage.setItem('data', JSON.stringify(data));
   d3Display(data);
-}
+};
