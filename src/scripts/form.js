@@ -60,7 +60,7 @@ form.addEventListener('submit', (e) => {
     action: 'GET',
     url
   })
-    .then(response => (response.json()))
+    // .then(response => (response.json()))
     .then(handleRootResponse)
     .then(searchField.value = '')
     .catch(console.log);

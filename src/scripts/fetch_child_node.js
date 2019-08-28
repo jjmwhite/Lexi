@@ -13,7 +13,7 @@ export const fetchChildNode = (args) => {
     action: 'GET',
     url
   })
-    .then(response => { return response.json() })
+    // .then(response => { return response.json() })
     .then(jsonResponse => {   
       handleChildResponse(jsonResponse, wordType, parentId, parentWord)
     })
