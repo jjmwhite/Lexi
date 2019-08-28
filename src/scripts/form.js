@@ -55,7 +55,11 @@ form.addEventListener('submit', (e) => {
   // if your arrow functions take in a single arg and pass that arg to a named function, just use the function as the callback
 
   // TODO refactor fetchWord away and decouple from form and child node
-  fetch(url, { referrer: '', keepalive: false } )
+  // fetch(url, { referrer: '', keepalive: false } )
+  $.ajax({ 
+    action: 'GET',
+    url
+  })
     .then(response => (response.json()))
     .then(handleRootResponse)
     .then(searchField.value = '')

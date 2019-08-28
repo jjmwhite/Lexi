@@ -8,7 +8,11 @@ export const fetchChildNode = (args) => {
 
   const apiKey = '9451e38b-3466-430f-92df-a7a61487cf03';
   let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`;
-  fetch(url, { referrer: '', keepalive: false } )
+  // fetch(url, { referrer: '', keepalive: false } )
+  $.ajax({
+    action: 'GET',
+    url
+  })
     .then(response => { return response.json() })
     .then(jsonResponse => {   
       handleChildResponse(jsonResponse, wordType, parentId, parentWord)
