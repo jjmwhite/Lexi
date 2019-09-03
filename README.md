@@ -3,7 +3,7 @@ We've all been there: you're writing something—an important email, note, or pr
     
 **Lexi** offers users a seamless, intuitive user experience, tracing a clear visual and verbal path from one synonym to the next until you find that perfect word.
 
-![Lexi screenshot](src/assets/images/screenshot_with_hover.png)
+![Lexi screenshot](public/src/assets/images/screenshot_with_hover.png)
 
 ## Architecture and Technologies
 * **D3** forms the backbone of Lexi's visual depiction
