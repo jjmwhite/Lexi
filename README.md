@@ -6,10 +6,12 @@ We've all been there: you're writing something—an important email, note, or pr
 ![Lexi screenshot](src/assets/images/screenshot_with_hover.png)
 
 ## Architecture and Technologies
-* **Vanilla Javascript** for all data manipulation
+* **D3** forms the backbone of Lexi's visual depiction
+* **Vanilla Javascript** is used for all data manipulation
+* **Axios** handles asynchronous requests
+* **Express** configures backend endpoints and route remote API requests
+* **Merriam-Webster API** supplies the lexical data
 * **Webpack** for bundling scripts into a single source
-* **Merriam-Webster API** as the core API endpoint for this project
-* **D3** as the backbone of Lexi's visual depiction
 
 ## Functionality and Features
 * Users enter a root word for which they'd like a synonym, and Lexi displays a path via each lexical type (noun, verb, adjective, etc.) and a list of synonyms they can choose from to begin exploring.
