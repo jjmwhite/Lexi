@@ -66,6 +66,7 @@ form.addEventListener('submit', (e) => {
   //   .then(searchField.value = '')
   //   .catch(console.log);
 
+  debugger
   axios.get(`search/${query}`)
     .then(handleRootResponse)
     .then(searchField.value = '')

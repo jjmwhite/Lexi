@@ -3,6 +3,8 @@ import { createErrorNode } from './create_error_node';
 import d3Display from '../d3/d3';
 
 export const handleRootResponse = (jsonResponse) => {
+  debugger
+  
   // this is an array of one object: the root word
   const data = JSON.parse(sessionStorage.getItem('data'))
   const root = data[0];

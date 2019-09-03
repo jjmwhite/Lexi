@@ -7,12 +7,13 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/', (request, response) => {
-  debugger
   response.sendFile(path.join(__dirname, './public/index.html'))
 });
 
 app.get('/search/:query', (query, response) => {
+  debugger
   fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=9451e38b-3466-430f-92df-a7a61487cf03`)
+    .then(console.log(query))
     .then(response => (response.json()))
 })
 
