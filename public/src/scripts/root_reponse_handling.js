@@ -8,7 +8,6 @@ export const handleRootResponse = (jsonResponse) => {
   const root = data[0];
   const results = jsonResponse.data
   if (results[0] instanceof Object) {
-    debugger
     results.forEach((type, idx) => {
       if (type.hwi.hw === root.word) {
         let rootChildObj = {

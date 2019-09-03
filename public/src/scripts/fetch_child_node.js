@@ -1,21 +1,16 @@
 import { idGenerator } from './node_utilities';
 import { createErrorNode } from './create_error_node';
 import d3Display from '../d3/d3';
+const axios = require('axios');
 
 export const fetchChildNode = (args) => {
   // aliased destructuring
   const { word: query, id: parentId, word: parentWord, wordType } = args.data;
 
-  const apiKey = '9451e38b-3466-430f-92df-a7a61487cf03';
-  let url = `https://dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`;
-  // fetch(url, { referrer: '', keepalive: false } )
-  $.ajax({
-    action: 'GET',
-    url
-  })
-    // .then(response => { return response.json() })
-    .then(jsonResponse => {   
-      handleChildResponse(jsonResponse, wordType, parentId, parentWord)
+  axios.get(`/search/${query}`)
+    .then( jsonResponse => {
+      const results = jsonResponse.data 
+      handleChildResponse(results, wordType, parentId, parentWord)
     })
     .catch(error => console.log(error));
 };
