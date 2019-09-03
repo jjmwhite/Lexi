@@ -3,13 +3,13 @@ import { createErrorNode } from './create_error_node';
 import d3Display from '../d3/d3';
 
 export const handleRootResponse = (jsonResponse) => {
-  debugger
-  
   // this is an array of one object: the root word
   const data = JSON.parse(sessionStorage.getItem('data'))
   const root = data[0];
-  if (jsonResponse[0] instanceof Object) {
-    jsonResponse.forEach((type, idx) => {
+  const results = jsonResponse.data
+  if (results[0] instanceof Object) {
+    debugger
+    results.forEach((type, idx) => {
       if (type.hwi.hw === root.word) {
         let rootChildObj = {
           id: idGenerator(),
