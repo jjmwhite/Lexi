@@ -11,11 +11,8 @@ app.get('/', (request, response) => {
 });
 
 app.get('/search/:query', (request, response) => {
-  console.log(request.params.query)
   fetch(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${request.params.query}?key=9451e38b-3466-430f-92df-a7a61487cf03`)
-    .then(results =>  {
-      return results.json()
-    })
+    .then(results =>  { return results.json() })
     .then(results => response.send(results))
 })
 

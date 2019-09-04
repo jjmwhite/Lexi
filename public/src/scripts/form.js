@@ -36,8 +36,6 @@ form.addEventListener('submit', (e) => {
 
   sessionStorage.setItem('data', JSON.stringify([root]));
   
-  // arrow functions implicitly return (don't use body braces)
-  // if your arrow functions take in a single arg and pass that arg to a named function, just use the function as the callback
   axios.get(`/search/${query}`)
     .then(handleRootResponse)
     .then(searchField.value = '')

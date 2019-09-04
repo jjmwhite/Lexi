@@ -4,7 +4,6 @@ import d3Display from '../d3/d3';
 const axios = require('axios');
 
 export const fetchChildNode = (args) => {
-  // aliased destructuring
   const { word: query, id: parentId, word: parentWord, wordType } = args.data;
 
   axios.get(`/search/${query}`)
